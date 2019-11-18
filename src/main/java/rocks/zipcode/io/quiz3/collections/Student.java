@@ -35,7 +35,8 @@ public class Student {
     }
 
     public void forkLab(Lab lab) {
-        labs.add(lab);
+       lab.setStatus(LabStatus.PENDING);
+       labs.add(lab);
 
     }
 
@@ -46,7 +47,7 @@ public class Student {
     @Override
     public String toString() {
         String result = "";
-        for (int i = 0; i < labs.size(); i++) {
+        for (int i = labs.size() - 1; i>0; i--) {
             result = result + labs.get(i).getName() + " > " + labs.get(i).getStatus() + '\n';
         }
         return result;

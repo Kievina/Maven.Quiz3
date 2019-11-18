@@ -13,11 +13,23 @@ public class ArrayUtility<SomeType> {
     }
 
     public SomeType findOddOccurringValue() {
-        return null;
+        SomeType result = null;
+        for (int i = 0; i < array.length; i++) {
+            if (getNumberOfOccurrences(array[i]) % 3 == 0)
+                result = array[i];
+            break;
+        }
+        return result;
     }
 
     public SomeType findEvenOccurringValue() {
-        return null;
+        SomeType result = null;
+        for (int i = 0; i < array.length; i++) {
+            if (getNumberOfOccurrences(array[i]) % 2 == 0)
+                result = array[i];
+            break;
+        }
+        return result;
     }
 
     public Integer getNumberOfOccurrences(SomeType valueToEvaluate) {
