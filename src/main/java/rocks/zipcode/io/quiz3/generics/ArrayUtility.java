@@ -1,5 +1,6 @@
 package rocks.zipcode.io.quiz3.generics;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 /**
@@ -15,9 +16,8 @@ public class ArrayUtility<SomeType> {
     public SomeType findOddOccurringValue() {
         SomeType result = null;
         for (int i = 0; i < array.length; i++) {
-            if (getNumberOfOccurrences(array[i]) % 3 == 0)
+            if (getNumberOfOccurrences(array[i]) % 2 != 0)
                 result = array[i];
-            break;
         }
         return result;
     }
@@ -27,7 +27,6 @@ public class ArrayUtility<SomeType> {
         for (int i = 0; i < array.length; i++) {
             if (getNumberOfOccurrences(array[i]) % 2 == 0)
                 result = array[i];
-            break;
         }
         return result;
     }
@@ -43,6 +42,8 @@ public class ArrayUtility<SomeType> {
 
 
     public SomeType[] filter(Function<SomeType, Boolean> predicate) {
-        return null;
+        return Arrays.stream(array).filter( predicate::apply ).toArray(size -> Arrays.copyOf(array,size));
+//        SomeType[] result = (SomeType[]) []) Array.newInstance(SomeType, this.array.length - getNumberOfOccurrences(valueToRemove));
+//        return null;
     }
 }
