@@ -7,5 +7,5 @@ package rocks.zipcode.io.quiz3.collections;
 public enum LabStatus {
     COMPLETED,
     INCOMPLETE,
-    PENDING;
+    PENDING
 }

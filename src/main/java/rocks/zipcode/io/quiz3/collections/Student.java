@@ -28,15 +28,16 @@ public class Student {
     }
 
     public void setLabStatus(String labName, LabStatus labStatus) {
-        for (int i = 0; i < labs.size(); i++) {
-            if (labs.get(i).equals(getLab(labName)))
-                labs.get(i).setStatus(labStatus);
+        try {
+            getLab(labName).setStatus(labStatus);
+        } catch (Exception e) {
+            throw new UnsupportedOperationException(e);
         }
     }
 
     public void forkLab(Lab lab) {
-       lab.setStatus(LabStatus.PENDING);
-       labs.add(lab);
+        lab.setStatus(LabStatus.PENDING);
+        labs.add(lab);
 
     }
 
@@ -47,8 +48,11 @@ public class Student {
     @Override
     public String toString() {
         String result = "";
-        for (int i = labs.size() - 1; i>0; i--) {
-            result = result + labs.get(i).getName() + " > " + labs.get(i).getStatus() + '\n';
+        for (int i = labs.size() - 1; i >= 0; i--) {
+             if (i !=0)
+                 result += labs.get(i).toString() + '\n';
+             else
+                 result += labs.get(i).toString();
         }
         return result;
     }
